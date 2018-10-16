@@ -4,9 +4,9 @@ using Microsoft.Extensions.Logging;
 
 namespace RestApiCore.Controllers
 {
-    [Produces("application/json")]
     [Route("api/Service")]
-    public class ServiceController : Controller
+    [ApiController]
+    public class ServiceController : ControllerBase
     {
         private readonly ILogger _logger;
         public ServiceController(ILogger<ServiceController> logger)
@@ -16,7 +16,6 @@ namespace RestApiCore.Controllers
 
         [HttpGet]
         [Route("Status")]
-        [Produces(typeof(object))]
         public IActionResult Status()
         {
             var appName = Assembly.GetEntryAssembly().GetName().Name;
